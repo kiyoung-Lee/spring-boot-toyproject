@@ -1,5 +1,18 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.3.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
 apply plugin: 'java'
 apply plugin: 'eclipse'
+apply plugin: 'spring-boot'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -13,12 +26,18 @@ jar {
 
 repositories {
     mavenCentral()
+    jcenter {
+        url "http://jcenter.bintray.com/"
+    }
 }
 
 dependencies {        
     compile("org.springframework.boot:spring-boot-starter-web:1.5.6.RELEASE")
-    compile("commons-collections:commons-collections:3.2")
+    compile("commons-collections:commons-collections:3.2")	
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    compile('mysql:mysql-connector-java')
     testCompile("junit:junit:4.+")
+    testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
 test {
