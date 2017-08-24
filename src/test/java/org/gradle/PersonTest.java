@@ -23,7 +23,7 @@ public class PersonTest {
         System.out.println(home);
         
         String[] arr = environment.getActiveProfiles();
-        System.out.println(arr);
+        System.out.println(arr);      
         
     }
 }

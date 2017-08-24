@@ -5,22 +5,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.sample.boot.Entity.Group;
-import com.sample.boot.repository.SampleRepository;
+import com.sample.boot.service.GroupService;
 
 @Controller
 public class SampleController {
 	
 	@Autowired
-	private SampleRepository repository;
+	private GroupService service;
 	
 	@RequestMapping(path = "/test")
 	@ResponseBody
 	public void hello(){
+	
 		
-		Group group = new Group();
-		group.setName("test");
-		
-		repository.save(group);
 	}
 }
