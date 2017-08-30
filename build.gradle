@@ -38,7 +38,7 @@ dependencies {
 	runtime("com.h2database:h2")
 	compile("org.mybatis.spring.boot:mybatis-spring-boot-starter:1.1.1")
     compile('mysql:mysql-connector-java')
-    compile("org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:1.16")
+    compile("org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:1.16")    
     testCompile("junit:junit:4.+")
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }

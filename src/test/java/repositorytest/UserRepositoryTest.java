@@ -2,6 +2,8 @@ package repositorytest;
 
 import static org.junit.Assert.*;
 
+import java.util.UUID;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.sample.boot.Application;
+import com.sample.boot.dto.UserDTO;
 import com.sample.boot.repository.UserRepository;
 
 @RunWith(SpringRunner.class)
@@ -37,5 +40,14 @@ public class UserRepositoryTest {
 		String invalidId = "InvalidID";
 		int result = repository.getUserInfo(invalidId);
 		assertEquals(result, 0);
+	}
+	
+	@Test
+	public void insertNewUser_Test(){
+		UserDTO user = new UserDTO();
+		user.setUserName("testUser");
+		user.setExternalId("externalId" + UUID.randomUUID().toString());
+		
+		repository.inserNewUser(user);
 	}
 }
