@@ -13,15 +13,17 @@ import com.sample.boot.dto.UserDTO;
 public interface UserMapper {
 
 	
-	final String SELECT_GET_USER_INFO = "select count(*) as count "
+	final String SELECT_GET_USER_INFO = "select * "
 									  + "from USER U "
 									  + "where U.U_EXTERNAL_ID = #{facebookId}";
 	
 	@Results({
-		@Result(property = "count", column = "count")					
+		@Result(property = "userIdx", column = "U_IDX"),					
+		@Result(property = "userName", column = "U_NAME"),					
+		@Result(property = "externalId", column = "U_EXTERNAL_ID")					
 	})
 	@Select(SELECT_GET_USER_INFO)
-	int getUserInfo(@Param("facebookId")String facebookId);
+	UserDTO getUserInfo(@Param("facebookId")String facebookId);
 	
 	final String INSERT_NEW_USER = "insert into USER "
 								 + "(U_NAME, U_EXTERNAL_ID, U_DATE) "

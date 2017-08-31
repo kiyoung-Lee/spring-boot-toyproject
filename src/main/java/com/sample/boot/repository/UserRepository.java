@@ -13,11 +13,19 @@ public class UserRepository {
 	UserMapper mapper;
 	
 	//Unit Test: getUserInfo_Test, getUserInfo_Null_Test, getUserInfo_Invalid_Id_Test
-	public int getUserInfo(String facebookId){
+	public UserDTO getUserInfo(String facebookId){
 		return mapper.getUserInfo(facebookId);
 	}
 	
 	public void inserNewUser(UserDTO user){
+		if(user == null){
+			throw new NullPointerException("UserInfo Is Null");
+		}
+		
+		if(user.getUserName() == null){
+			throw new NullPointerException("UserName Is Null");
+		}
+		
 		mapper.inserNewUser(user);
 	}
 }

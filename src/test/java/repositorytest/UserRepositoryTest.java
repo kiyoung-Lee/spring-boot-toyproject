@@ -24,22 +24,23 @@ public class UserRepositoryTest {
 	@Test
 	public void getUserInfo_Test(){
 		String facebookId = "temp_id";
-		int result = repository.getUserInfo(facebookId);
+		UserDTO result = repository.getUserInfo(facebookId);
 		
-		assertEquals(result, 1);
+		assertNotNull(result);
+		assertEquals(result.getExternalId(), "temp_id");
 	}
 	
 	@Test
 	public void getUserInfo_Null_Test(){
-		int result = repository.getUserInfo(null);
-		assertEquals(result, 0);
+		UserDTO result = repository.getUserInfo(null);
+		assertNull(result);
 	}
 	
 	@Test
 	public void getUserInfo_Invalid_Id_Test(){
 		String invalidId = "InvalidID";
-		int result = repository.getUserInfo(invalidId);
-		assertEquals(result, 0);
+		UserDTO result = repository.getUserInfo(invalidId);		
+		assertNull(result);
 	}
 	
 	@Test
@@ -48,6 +49,17 @@ public class UserRepositoryTest {
 		user.setUserName("testUser");
 		user.setExternalId("externalId" + UUID.randomUUID().toString());
 		
+		repository.inserNewUser(user);
+	}
+	
+	@Test (expected = NullPointerException.class)
+	public void insertNewUser_Null_Test(){
+		repository.inserNewUser(null);
+	}
+	
+	@Test (expected = NullPointerException.class)
+	public void insertNewUser_UserName_Null_Test(){
+		UserDTO user = new UserDTO();		
 		repository.inserNewUser(user);
 	}
 }

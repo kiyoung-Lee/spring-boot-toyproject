@@ -14,4 +14,8 @@ public class GroupRepository {
 	public int selectTest(){
 		return mapper.getGroupCount();
 	}
+	
+	public void insertDefaultGroup(){
+		
+	}
 }
