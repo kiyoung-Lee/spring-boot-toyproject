@@ -13,11 +13,16 @@ public class UserRepository {
 	UserMapper mapper;
 	
 	//Unit Test: getUserInfo_Test, getUserInfo_Null_Test, getUserInfo_Invalid_Id_Test
-	public UserDTO getUserInfo(String facebookId){
-		return mapper.getUserInfo(facebookId);
+	public UserDTO getUserInfo(String externalId){
+		return mapper.getUserInfo(externalId);
 	}
 	
 	public void inserNewUser(UserDTO user){
+		if (checkNewUserValidate(user))		
+			mapper.inserNewUser(user);
+	}
+	
+	private boolean checkNewUserValidate(UserDTO user){
 		if(user == null){
 			throw new NullPointerException("UserInfo Is Null");
 		}
@@ -26,6 +31,10 @@ public class UserRepository {
 			throw new NullPointerException("UserName Is Null");
 		}
 		
-		mapper.inserNewUser(user);
+		if(user.getExternalId() == null){
+			throw new NullPointerException("ExternalId Is Null");
+		}
+		
+		return true;
 	}
 }

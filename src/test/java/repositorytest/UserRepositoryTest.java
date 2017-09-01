@@ -62,4 +62,11 @@ public class UserRepositoryTest {
 		UserDTO user = new UserDTO();		
 		repository.inserNewUser(user);
 	}
+	
+	@Test (expected = NullPointerException.class)
+	public void insertNewUser_ExternalId_Null_Test(){
+		UserDTO user = new UserDTO();
+		user.setUserName("testName");
+		repository.inserNewUser(user);
+	}
 }
