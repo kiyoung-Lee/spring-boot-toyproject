@@ -21,7 +21,9 @@ public class UserService {
 		
 		if(exsistUser == null){
 			userRepository.inserNewUser(user);
-			groupRepository.assignDefaultGroup();
+			groupRepository.assign_User_Group_Relate(user.getUserIdx(), 2);
+			groupRepository.assign_User_Group_Relate(user.getUserIdx(), 3);
+			groupRepository.assign_User_Group_Relate(user.getUserIdx(), 4);
 		} 
 	}
 }

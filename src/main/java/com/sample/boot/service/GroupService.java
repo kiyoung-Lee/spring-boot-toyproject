@@ -14,8 +14,7 @@ public class GroupService {
 	@Autowired
 	private GroupRepository repository;
 		
-	public List<GroupDTO> getGroupList(int userIdx){
-		
-		return repository.getGroupList(userIdx);
+	public List<GroupDTO> getGroupList(String groupIdxList){		
+		return repository.getGroupList(groupIdxList);
 	}
 }

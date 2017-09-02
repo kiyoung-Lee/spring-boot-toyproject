@@ -1,5 +1,7 @@
 package com.sample.boot.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -31,4 +33,11 @@ public interface UserMapper {
 	
 	@Insert(INSERT_NEW_USER)
 	void inserNewUser(@Param("user")UserDTO user);
+	
+	final String SELECT_USER_GROUP_RELATE_GROUP_LIST_FROM_USER_IDX = 
+										  "select * from U_G_RELATE "
+										+ "where U_IDX = #{userIdx}";
+	
+	@Select(SELECT_USER_GROUP_RELATE_GROUP_LIST_FROM_USER_IDX)
+	List<Integer> getGroupIdxListFromUserIdx(@Param("userIdx")int userIdx);
 }

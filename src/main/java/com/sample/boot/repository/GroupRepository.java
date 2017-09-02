@@ -16,14 +16,13 @@ public class GroupRepository {
 	
 	public int selectTest(){
 		return mapper.getGroupCount();
+	}	
+	
+	public void assign_User_Group_Relate(int userIdx, int groupIdx){
+		mapper.insert_User_Group_Relate(userIdx, groupIdx);
 	}
 	
-	public void assignDefaultGroup(){
-		
-	}
-	
-	public List<GroupDTO> getGroupList(int userIdx){
-		
-		return null;
+	public List<GroupDTO> getGroupList(String groupIdxList){
+		return mapper.getGroupListFromGroupIdx(groupIdxList);		
 	}
 }

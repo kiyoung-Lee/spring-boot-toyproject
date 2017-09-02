@@ -1,5 +1,7 @@
 package com.sample.boot.repository;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -36,5 +38,9 @@ public class UserRepository {
 		}
 		
 		return true;
+	}
+	
+	public List<Integer> getGroupIdxList_From_UserIdx(int ueserIdx){
+		return mapper.getGroupIdxListFromUserIdx(ueserIdx);
 	}
 }
