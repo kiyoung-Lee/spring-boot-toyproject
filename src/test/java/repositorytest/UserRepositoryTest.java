@@ -2,6 +2,7 @@ package repositorytest;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.junit.Test;
@@ -9,6 +10,8 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sample.boot.Application;
 import com.sample.boot.dto.UserDTO;
@@ -44,6 +47,7 @@ public class UserRepositoryTest {
 	}
 	
 	@Test
+	@Transactional
 	public void insertNewUser_Test(){
 		UserDTO user = new UserDTO();
 		user.setUserName("testUser");
@@ -68,5 +72,17 @@ public class UserRepositoryTest {
 		UserDTO user = new UserDTO();
 		user.setUserName("testName");
 		repository.inserNewUser(user);
+	}
+	
+	@Test
+	public void getGroupIdxList_From_UserIdx_Test() throws Exception {
+		List<Integer> result = repository.getGroupIdxList_From_UserIdx(2);
+		assertNotNull(result);
+	}
+	
+	@Test (expected = IllegalArgumentException.class)
+	public void getGroupIdxList_From_UserIdx_Invalid_Test() throws Exception {
+		List<Integer> result = repository.getGroupIdxList_From_UserIdx(0);
+		assertNull(result);
 	}
 }
