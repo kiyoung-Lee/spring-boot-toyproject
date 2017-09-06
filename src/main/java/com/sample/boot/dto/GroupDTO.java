@@ -7,7 +7,7 @@ public class GroupDTO {
 	private int groupIdx;
 	private String groupName;
 	private String thumbnail;
-	private DateTime date;
+	private String date;
 	
 	public int getGroupIdx() {
 		return groupIdx;
@@ -27,10 +27,10 @@ public class GroupDTO {
 	public void setThumbnail(String thumbnail) {
 		this.thumbnail = thumbnail;
 	}
-	public DateTime getDate() {
+	public String getDate() {
 		return date;
 	}
-	public void setDate(DateTime date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 }

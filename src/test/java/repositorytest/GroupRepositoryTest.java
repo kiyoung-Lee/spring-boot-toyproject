@@ -45,7 +45,7 @@ public class GroupRepositoryTest {
 		assertEquals(groupList.size(), 2);
 	}
 	
-	@Test
+	@Test (expected = NullPointerException.class)
 	public void getGroupList_Null_Test() throws Exception {
 		List<GroupDTO> groupList = repository.getGroupList(null);
 	}

@@ -5,6 +5,8 @@ import java.util.List;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 
 import com.sample.boot.dto.GroupDTO;
@@ -32,6 +34,12 @@ public interface GroupMapper {
 												  + "from kydbtest.GROUP "
 												  + "where G_IDX in (${groupIdxList})"; 
 	
+	@Results({
+		@Result(property = "groupIdx", column = "G_IDX"),					
+		@Result(property = "groupName", column = "G_NAME"),					
+		@Result(property = "thumbnail", column = "G_THUMBNAIL"),
+		@Result(property = "date", column = "G_DATE")
+	})
 	@Select(SELECT_GROUP_LIST_FROM_GROUP_IDX)
 	List<GroupDTO> getGroupListFromGroupIdx(@Param("groupIdxList")String groupIdxList);
 }
