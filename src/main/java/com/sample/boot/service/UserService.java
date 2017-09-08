@@ -16,7 +16,7 @@ public class UserService {
 	@Autowired
 	GroupRepository groupRepository;
 		
-	public void login(UserDTO user){
+	public UserDTO login(UserDTO user){
 		UserDTO exsistUser = userRepository.getUserInfo(user.getExternalId());
 		
 		if(exsistUser == null){
@@ -25,5 +25,7 @@ public class UserService {
 			groupRepository.assign_User_Group_Relate(user.getUserIdx(), 3);
 			groupRepository.assign_User_Group_Relate(user.getUserIdx(), 4);
 		} 
+		
+		return exsistUser;
 	}
 }

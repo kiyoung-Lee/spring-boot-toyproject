@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
@@ -32,6 +33,7 @@ public interface UserMapper {
 								 + "values(#{user.userName}, #{user.externalId}, now())";
 	
 	@Insert(INSERT_NEW_USER)
+	@Options(useGeneratedKeys=true, keyProperty = "user.userIdx")
 	void inserNewUser(@Param("user")UserDTO user);
 	
 	final String SELECT_USER_GROUP_RELATE_GROUP_LIST_FROM_USER_IDX = 

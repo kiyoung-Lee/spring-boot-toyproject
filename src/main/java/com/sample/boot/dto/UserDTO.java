@@ -1,9 +1,15 @@
 package com.sample.boot.dto;
 
+import javax.validation.constraints.NotNull;
+
 public class UserDTO {
 
 	private int userIdx;
+	
+	@NotNull
 	private String userName;
+	
+	@NotNull
 	private String externalId;
 	
 	public int getUserIdx() {
