@@ -1,5 +1,6 @@
 package com.sample.boot.service;
 
+import org.assertj.core.util.Preconditions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,14 +18,23 @@ public class UserService {
 	GroupRepository groupRepository;
 		
 	public UserDTO login(UserDTO user){
-		UserDTO exsistUser = userRepository.getUserInfo(user.getExternalId());
+		Preconditions.checkNotNull(user, "UserInfo Is Null");
+		Preconditions.checkNotNull(user.getExternalId(), "ExternalId Is Null");		
+		return userRepository.getUserInfo(user.getExternalId());	
+	}
+	
+	public UserDTO Join(UserDTO user){
+		Preconditions.checkNotNull(user, "UserInfo Is Null");
+		UserDTO exsistUser = login(user);
 		
+		// 회원가입 & 자동로그인
 		if(exsistUser == null){
 			userRepository.inserNewUser(user);
 			groupRepository.assign_User_Group_Relate(user.getUserIdx(), 2);
 			groupRepository.assign_User_Group_Relate(user.getUserIdx(), 3);
 			groupRepository.assign_User_Group_Relate(user.getUserIdx(), 4);
-		} 
+			return login(user);
+		}
 		
 		return exsistUser;
 	}

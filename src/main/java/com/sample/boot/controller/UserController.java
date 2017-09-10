@@ -33,4 +33,21 @@ public class UserController {
 		
 		return response;
 	}
+	
+	@RequestMapping(value = "/join", method = RequestMethod.POST)
+	public BaseResponse join(@RequestBody UserDTO joinUser){
+		BaseResponse response = new BaseResponse();
+		
+		UserDTO joinResult = service.login(joinUser);
+		if(joinResult != null){
+			response.setSuccess(true);
+			response.setData(joinResult);
+			response.setMessage("회원가입 성공");
+		}else {
+			response.setSuccess(false);
+			response.setMessage("회원가입 실패");
+		}
+		
+		return response;
+	}
 }
