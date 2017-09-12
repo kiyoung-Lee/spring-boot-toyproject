@@ -17,14 +17,20 @@ public class UserService {
 	@Autowired
 	GroupRepository groupRepository;
 		
+	//Unit Test: login_Test, login_Null_Test, login_ExternalId_Null_Test, 
 	public UserDTO login(UserDTO user){
 		Preconditions.checkNotNull(user, "UserInfo Is Null");
 		Preconditions.checkNotNull(user.getExternalId(), "ExternalId Is Null");		
+		
 		return userRepository.getUserInfo(user.getExternalId());	
 	}
 	
+	//Unit Test: join_Test, join_Null_Test, join_ExternalId_Null_Test, join_UserName_Null_Test, join_ExsistUser_Test
 	public UserDTO Join(UserDTO user){
 		Preconditions.checkNotNull(user, "UserInfo Is Null");
+		Preconditions.checkNotNull(user.getExternalId(), "ExternalId Is Null");
+		Preconditions.checkNotNull(user.getUserName(), "UserName Is Null");
+		
 		UserDTO exsistUser = login(user);
 		
 		// 회원가입 & 자동로그인
