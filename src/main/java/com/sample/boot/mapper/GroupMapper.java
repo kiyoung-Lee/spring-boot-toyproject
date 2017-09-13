@@ -30,6 +30,17 @@ public interface GroupMapper {
 	@Insert(INSERT_U_G_RELATE)
 	void insert_User_Group_Relate(@Param("userIdx") int userIdx, @Param("groupIdx") int groupIdx);
 	
+	final String SELECT_RELATE_GOUP_IDX_LIST = "select G_IDX "
+											 + "from kydbtest.GROUP "
+											 + "where U_IDX = #{userIdx}";
+	
+	@Results({
+		@Result(column = "G_IDX")
+	})
+	@Select(SELECT_RELATE_GOUP_IDX_LIST)
+	List<Integer> getRelateGroupIdxList(@Param("userIdx") int userIdx);
+	
+	
 	final String SELECT_GROUP_LIST_FROM_GROUP_IDX = "select * "
 												  + "from kydbtest.GROUP "
 												  + "where G_IDX in (${groupIdxList})"; 

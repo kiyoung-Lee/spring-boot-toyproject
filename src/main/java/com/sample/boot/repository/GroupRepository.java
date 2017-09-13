@@ -22,6 +22,11 @@ public class GroupRepository {
 		mapper.insert_User_Group_Relate(userIdx, groupIdx);
 	}
 	
+	public List<Integer> getRelateGroupIdxList(int userIdx){
+		Preconditions.checkArgument(userIdx > 0, "UserIdx Is Invalid");
+		return mapper.getRelateGroupIdxList(userIdx);		
+	}
+	
 	//Unit Test: getGroupList_Test, getGroupList_Null_Test
 	public List<GroupDTO> getGroupList(String groupIdxList){
 		Preconditions.checkNotNull(groupIdxList, "GroupIdxList Is Null");
