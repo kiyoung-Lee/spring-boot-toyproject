@@ -14,15 +14,9 @@ public class GroupService {
 
 	@Autowired
 	private GroupRepository repository;
-		
-	public List<Integer> getRelateGroupIdxList(int userIdx){
-		Preconditions.checkArgument(userIdx > 0, "UserIdx Is Invalid");
-		return repository.getRelateGroupIdxList(userIdx);		
-	}
 	
-	public List<GroupDTO> getGroupList(String groupIdxList){
-		Preconditions.checkNotNull(groupIdxList, "GroupIdxList Is Null");
-		
-		return repository.getGroupList(groupIdxList);
+	public List<GroupDTO> getGroupList(int userIdx){
+		Preconditions.checkArgument(userIdx > 0, "UserIdx Is Invalid");		
+		return repository.getGroupList(userIdx);
 	}
 }

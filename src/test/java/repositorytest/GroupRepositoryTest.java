@@ -40,13 +40,13 @@ public class GroupRepositoryTest {
 	
 	@Test
 	public void getGroupList_Test() throws Exception {
-		List<GroupDTO> groupList = repository.getGroupList("1,2");
+		List<GroupDTO> groupList = repository.getGroupList(2);
 		assertNotNull(groupList);
-		assertEquals(groupList.size(), 2);
+		assertEquals(groupList.size(), 3);
 	}
 	
-	@Test (expected = NullPointerException.class)
-	public void getGroupList_Null_Test() throws Exception {
-		List<GroupDTO> groupList = repository.getGroupList(null);
+	@Test (expected = IllegalArgumentException.class)
+	public void getGroupList_UserIdx_Invalid_Test() throws Exception {
+		List<GroupDTO> groupList = repository.getGroupList(0);
 	}
 }

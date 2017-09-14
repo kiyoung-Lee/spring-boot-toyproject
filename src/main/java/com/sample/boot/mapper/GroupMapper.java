@@ -30,20 +30,10 @@ public interface GroupMapper {
 	@Insert(INSERT_U_G_RELATE)
 	void insert_User_Group_Relate(@Param("userIdx") int userIdx, @Param("groupIdx") int groupIdx);
 	
-	final String SELECT_RELATE_GOUP_IDX_LIST = "select G_IDX "
-											 + "from kydbtest.GROUP "
-											 + "where U_IDX = #{userIdx}";
 	
-	@Results({
-		@Result(column = "G_IDX")
-	})
-	@Select(SELECT_RELATE_GOUP_IDX_LIST)
-	List<Integer> getRelateGroupIdxList(@Param("userIdx") int userIdx);
-	
-	
-	final String SELECT_GROUP_LIST_FROM_GROUP_IDX = "select * "
+	final String SELECT_GROUP_LIST_FROM_USER_IDX = "select * "
 												  + "from kydbtest.GROUP "
-												  + "where G_IDX in (${groupIdxList})"; 
+												  + "where G_IDX in (select G_IDX from U_G_RELATE where U_IDX = #{userIdx})"; 
 	
 	@Results({
 		@Result(property = "groupIdx", column = "G_IDX"),					
@@ -51,6 +41,6 @@ public interface GroupMapper {
 		@Result(property = "thumbnail", column = "G_THUMBNAIL"),
 		@Result(property = "date", column = "G_DATE")
 	})
-	@Select(SELECT_GROUP_LIST_FROM_GROUP_IDX)
-	List<GroupDTO> getGroupListFromGroupIdx(@Param("groupIdxList")String groupIdxList);
+	@Select(SELECT_GROUP_LIST_FROM_USER_IDX)
+	List<GroupDTO> getGroupListFromGroupIdx(@Param("userIdx")int userIdx);
 }

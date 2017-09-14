@@ -20,16 +20,11 @@ public class GroupRepository {
 		Preconditions.checkArgument(userIdx > 0, "UserIdx Is Invalid");
 		Preconditions.checkArgument(groupIdx > 0, "GroupIdx Is Invalid");		
 		mapper.insert_User_Group_Relate(userIdx, groupIdx);
-	}
+	}		
 	
-	public List<Integer> getRelateGroupIdxList(int userIdx){
+	//Unit Test: getGroupList_Test, getGroupList_UserIdx_Invalid_Test
+	public List<GroupDTO> getGroupList(int userIdx){
 		Preconditions.checkArgument(userIdx > 0, "UserIdx Is Invalid");
-		return mapper.getRelateGroupIdxList(userIdx);		
-	}
-	
-	//Unit Test: getGroupList_Test, getGroupList_Null_Test
-	public List<GroupDTO> getGroupList(String groupIdxList){
-		Preconditions.checkNotNull(groupIdxList, "GroupIdxList Is Null");
-		return mapper.getGroupListFromGroupIdx(groupIdxList);		
+		return mapper.getGroupListFromGroupIdx(userIdx);		
 	}
 }
