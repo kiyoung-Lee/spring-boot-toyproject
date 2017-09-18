@@ -15,6 +15,7 @@ public class GroupService {
 	@Autowired
 	private GroupRepository repository;
 	
+	//Unit Test: getGroupList_Test, getGroupList_userIdx_Invalid_Test
 	public List<GroupDTO> getGroupList(int userIdx){
 		Preconditions.checkArgument(userIdx > 0, "UserIdx Is Invalid");		
 		return repository.getGroupList(userIdx);
