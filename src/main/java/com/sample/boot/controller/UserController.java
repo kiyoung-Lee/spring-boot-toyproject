@@ -1,5 +1,7 @@
 package com.sample.boot.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,7 +20,7 @@ public class UserController {
 	UserService service;
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public BaseResponse login(@RequestBody UserDTO loginUser){
+	public BaseResponse login(@RequestBody @Valid UserDTO loginUser){
 		BaseResponse response = new BaseResponse();
 		
 		UserDTO loginResult = service.login(loginUser);
@@ -35,7 +37,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
-	public BaseResponse join(@RequestBody UserDTO joinUser){
+	public BaseResponse join(@RequestBody @Valid UserDTO joinUser){
 		BaseResponse response = new BaseResponse();
 		
 		UserDTO joinResult = service.login(joinUser);
