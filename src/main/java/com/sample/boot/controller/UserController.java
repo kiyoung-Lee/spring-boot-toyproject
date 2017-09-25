@@ -14,13 +14,14 @@ import com.sample.boot.dto.UserDTO;
 import com.sample.boot.service.UserService;
 
 @RestController
+@RequestMapping("/user")
 public class UserController {
 
 	@Autowired
 	UserService service;
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public BaseResponse login(@RequestBody @Valid UserDTO loginUser){
+	public BaseResponse login(@RequestBody UserDTO loginUser){
 		BaseResponse response = new BaseResponse();
 		
 		UserDTO loginResult = service.login(loginUser);
@@ -40,7 +41,7 @@ public class UserController {
 	public BaseResponse join(@RequestBody @Valid UserDTO joinUser){
 		BaseResponse response = new BaseResponse();
 		
-		UserDTO joinResult = service.login(joinUser);
+		UserDTO joinResult = service.Join(joinUser);
 		if(joinResult != null){
 			response.setSuccess(true);
 			response.setData(joinResult);
