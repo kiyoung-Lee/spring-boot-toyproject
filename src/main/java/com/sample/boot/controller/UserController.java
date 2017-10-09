@@ -21,17 +21,17 @@ public class UserController {
 	UserService service;
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public BaseResponse login(@RequestBody UserDTO loginUser){
+	public BaseResponse login(@RequestBody UserDTO loginUser){		
 		BaseResponse response = new BaseResponse();
 		
 		UserDTO loginResult = service.login(loginUser);
 		if(loginResult != null){
 			response.setSuccess(true);
 			response.setData(loginResult);
-			response.setMessage("·Î±×ÀÎ ¼º°ø");
+			response.setMessage("ë¡œê·¸ì¸ ì„±ê³µ.");
 		}else {
 			response.setSuccess(false);
-			response.setMessage("·Î±×ÀÎ ½ÇÆĞ");
+			response.setMessage("ë¡œê·¸ì¸ ì‹¤íŒ¨.");
 		}
 		
 		return response;
@@ -45,10 +45,10 @@ public class UserController {
 		if(joinResult != null){
 			response.setSuccess(true);
 			response.setData(joinResult);
-			response.setMessage("È¸¿ø°¡ÀÔ ¼º°ø");
+			response.setMessage("íšŒì›ê°€ì… ì„±ê³µ.");
 		}else {
 			response.setSuccess(false);
-			response.setMessage("È¸¿ø°¡ÀÔ ½ÇÆĞ");
+			response.setMessage("íšŒì›ê°€ì… ì‹¤íŒ¨.");
 		}
 		
 		return response;

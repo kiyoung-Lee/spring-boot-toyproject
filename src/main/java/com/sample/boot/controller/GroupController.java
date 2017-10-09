@@ -28,11 +28,11 @@ public class GroupController {
 		List<GroupDTO> result = service.getGroupList(userIdx);
 		if(result != null){
 			response.setSuccess(true);
-			response.setMessage("±×·ì ¸®½ºÆ® °¡Á®¿À±â ¼º°ø.");
+			response.setMessage("ê·¸ë£¹ ë¦¬ìŠ¤íŠ¸ ê°€ì ¸ì˜¤ê¸° ì„±ê³µ.");
 			response.setData(result);
 		}else{
 			response.setSuccess(false);
-			response.setMessage("±×·ì ¸®½ºÆ® °¡Á®¿À±â ½ÇÆÐ");
+			response.setMessage("ê·¸ë£¹ ë¦¬ìŠ¤íŠ¸ ê°€ì ¸ì˜¤ê¸° ì‹¤íŒ¨.");
 		}
 		
 		return response;

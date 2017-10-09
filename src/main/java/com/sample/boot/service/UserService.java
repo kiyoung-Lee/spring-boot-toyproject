@@ -33,7 +33,7 @@ public class UserService {
 		
 		UserDTO exsistUser = login(user);
 		
-		// È¸¿ø°¡ÀÔ & ÀÚµ¿·Î±×ÀÎ
+		// ë¡œê·¸ì¸ & íšŒì›ê°€ì…
 		if(exsistUser == null){
 			userRepository.inserNewUser(user);
 			groupRepository.assign_User_Group_Relate(user.getUserIdx(), 2);
