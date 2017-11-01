@@ -12,8 +12,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.sample.boot.Application;
-import com.sample.boot.dto.UserDTO;
-import com.sample.boot.service.UserService;
+import com.sample.boot.User.Data.UserDTO;
+import com.sample.boot.User.UserService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)

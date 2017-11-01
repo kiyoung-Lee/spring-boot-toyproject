@@ -1,4 +1,4 @@
-package com.sample.boot.repository;
+package com.sample.boot.Favorite;
 
 public class FavoriteRepository {
 }

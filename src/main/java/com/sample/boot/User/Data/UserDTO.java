@@ -1,4 +1,4 @@
-package com.sample.boot.dto;
+package com.sample.boot.User.Data;
 
 import javax.validation.constraints.NotNull;
 

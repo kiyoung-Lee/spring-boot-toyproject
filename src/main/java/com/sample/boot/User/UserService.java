@@ -1,12 +1,11 @@
-package com.sample.boot.service;
+package com.sample.boot.User;
 
 import org.assertj.core.util.Preconditions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.sample.boot.dto.UserDTO;
+import com.sample.boot.User.Data.UserDTO;
 import com.sample.boot.repository.GroupRepository;
-import com.sample.boot.repository.UserRepository;
 
 @Service
 public class UserService {

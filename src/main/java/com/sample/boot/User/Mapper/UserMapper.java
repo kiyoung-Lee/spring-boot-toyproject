@@ -1,4 +1,4 @@
-package com.sample.boot.mapper;
+package com.sample.boot.User.Mapper;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 
-import com.sample.boot.dto.UserDTO;
+import com.sample.boot.User.Data.UserDTO;
 
 @Mapper
 public interface UserMapper {

@@ -1,4 +1,4 @@
-package com.sample.boot.controller;
+package com.sample.boot.Favorite;
 
 public class FavoriteController {
 }

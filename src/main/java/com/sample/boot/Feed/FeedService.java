@@ -1,4 +1,4 @@
-package com.sample.boot.service;
+package com.sample.boot.Feed;
 
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package com.sample.boot.repository;
+package com.sample.boot.User;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import org.assertj.core.util.Preconditions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.sample.boot.dto.UserDTO;
-import com.sample.boot.mapper.UserMapper;
+import com.sample.boot.User.Data.UserDTO;
+import com.sample.boot.User.Mapper.UserMapper;
 
 @Repository
 public class UserRepository {
